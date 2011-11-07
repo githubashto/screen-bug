@@ -22,7 +22,7 @@
 /** @type {string} */ CSSProperties.prototype.KhtmlTransform;
 
 (function() {
-  /** @const */ var image_stationary = 'fruitfly.png';
+  /** @const */ var image_stationary = 'https://screen-bug.googlecode.com/git/fruitfly.png';
   /** @const */ var image_moving = image_stationary;
   var angle_deg = 90;
   var angle_rad = deg2rad(angle_deg);
