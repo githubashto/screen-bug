@@ -23,7 +23,7 @@
 
 (function() {
   /** @const */ var image_stationary = 'https://screen-bug.googlecode.com/git/fruitfly.png';
-  /** @const */ var image_moving = image_stationary;
+  /** @const */ var image_moving = image_stationary; // can be replaced with a moving image
   var angle_deg = 90;
   var angle_rad = deg2rad(angle_deg);
   var large_turn_angle_deg = 0;
