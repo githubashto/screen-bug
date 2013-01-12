@@ -1,11 +1,11 @@
 //
-// Screen-Bug.com
+// http://screen-bug.googlecode.com/git/index.html
 //
 // Copyright ©2011 Kernc (kerncece ^_^ gmail)
 // Released under WTFPL license.
 //
 // ==ClosureCompiler==
-// @compilation_level ADVANCED_OPTIMIZATIONS
+// @compilation_level SIMPLE_OPTIMIZATIONS
 // @js_externs style.OTransform
 // @js_externs style.msTransform
 // @js_externs style.KhtmlTransform
@@ -13,7 +13,7 @@
 // ==/ClosureCompiler==
 
 /**
- * @preserve Screen-Bug.com
+ * @preserve WWW: http://screen-bug.googlecode.com/git/index.html
  * Released under WTFPL license.
  */
 
@@ -23,7 +23,8 @@
 
 (function() {
   /** @const */ var image_stationary = 'https://screen-bug.googlecode.com/git/fruitfly.png';
-  /** @const */ var image_moving = image_stationary; // can be replaced with a moving image
+  /** @const */ var image_moving = image_stationary;  // can be replaced with a moving image
+  /** @const */ var move_speed = 2;  // speed modifier
   var angle_deg = 90;
   var angle_rad = deg2rad(angle_deg);
   var large_turn_angle_deg = 0;
@@ -32,7 +33,7 @@
   /** @const */ var NEAR_BOTTOM_EDGE = 2;
   /** @const */ var NEAR_LEFT_EDGE = 4;
   /** @const */ var NEAR_RIGHT_EDGE = 8;
-  /** @const */ var directions = {} // 0 degrees starts on the East
+  /** @const */ var directions = {}  // 0 degrees starts on the East
   /** @const */ directions[NEAR_TOP_EDGE] = 270;
   /** @const */ directions[NEAR_BOTTOM_EDGE] = 90;
   /** @const */ directions[NEAR_LEFT_EDGE] = 0;
@@ -53,7 +54,7 @@
   function init() {
     bug = document.createElement('img');
     bug.src = image_moving;
-    (new Image()).src = image_stationary; // preload
+    (new Image()).src = image_stationary;  // preload
     bug.style.position = 'fixed';
     bug.style.zIndex = '99';
     bug.top = random(edge_resistance, document.documentElement.clientHeight - edge_resistance);
@@ -75,7 +76,6 @@
       }
     
     angle_deg = random(0, 360);
-    main();
     if (transform) setInterval(main, 100);
   };
   function main() {
@@ -108,14 +108,14 @@
     } else {
       var dangle = random(1, 5);
       if (large_turn_angle_deg > 0 && dangle < 0 || large_turn_angle_deg < 0 && dangle > 0)
-        dangle = -dangle; // ensures both values either + or -
+        dangle = -dangle;  // ensures both values either + or -
       large_turn_angle_deg -= dangle;
       angle_deg += dangle;
     }
 
     angle_rad = deg2rad(angle_deg);
-    var dx = Math.cos(angle_rad);
-    var dy = -Math.sin(angle_rad);
+    var dx = Math.cos(angle_rad) * move_speed;
+    var dy = -Math.sin(angle_rad) * move_speed;
     move(dx, dy);
     transform("rotate(" + (90 - angle_deg) + "deg)");
   };
@@ -169,15 +169,15 @@
     }
   };
   function enable_onmousemove_event() {
-    if(document.addEventListener) // FF, Chrome et al.
+    if(document.addEventListener)  // FF, Chrome et al.
       document.addEventListener('mousemove', check_if_mouse_close_to_bug, false);
-    else if(document.attachEvent) // IE
+    else if(document.attachEvent)  // IE
       document.attachEvent('onmousemove', check_if_mouse_close_to_bug); 
   };
   function disable_onmousemove_event() {
-    if(document.removeEventListener) // FF, Chrome et al.
+    if(document.removeEventListener)  // FF, Chrome et al.
       document.removeEventListener('mousemove', check_if_mouse_close_to_bug, false);
-    else if(document.detachEvent) // IE
+    else if(document.detachEvent)  // IE
       document.detachEvent('onmousemove', check_if_mouse_close_to_bug); 
   };
   function check_if_mouse_close_to_bug(e) {
