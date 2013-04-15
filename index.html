@@ -12,6 +12,7 @@
 .oldbug img {border:5px dashed red;vertical-align:middle;}
 .browsers {font:bold 15px sans-serif;color:skyblue;}
 .snippet {display:block;border:3px dashed orange;background:gold;padding:10px;margin:10px 20px;font:bold 16px sans-serif;color:maroon;}
+.warning {display:block;border:3px dashed red;background:rosybrown;padding:10px;margin:10px 20px;font:bold 16px sans-serif;color:maroon;}
 </style>
 
 <!--script type="text/javascript">
@@ -48,7 +49,7 @@ s.parentNode.insertBefore(po,s);
   Well, it's got company: <p/>
   Let me proudly present the alternative <b>crawling screen bug 2.0</b>: it uses JavaScript &amp; CSS3 so it works on most modern browsers:
   <ul class="browsers">
-    <li>Firefox 3.5+ <span style="color:orange">(ATM seems to be broken on Firefox17+ on GNU/Linux)</span></li>
+    <li>Firefox 3.5+ <span style="color:orange">(ATM seems to be broken on Firefox17 (v17.x only) on GNU/Linux (only))</span></li>
     <li>Chrome 9+</li>
     <li>Opera 10.5+</li>
     <li>Safari 3.5+</li>
@@ -59,7 +60,7 @@ s.parentNode.insertBefore(po,s);
   How to use? <p/>
   Just copy the snippet below and put it in your webpage's HTML source (either in <code>&lt;head&gt;</code> or somewhere in the <code>&lt;body&gt;</code>). Repeat for more bugs.
   <code class="snippet">&lt;script src="https://screen-bug.googlecode.com/git/screenbug-min.js"&gt;&lt;/script&gt;</code>
-
+  <code class="warning">Note, you may wish to use a somewhat superior alternative <a href="https://github.com/Auz/Bug">Bug</a> by Auz.</code>
   That's it. Enjoy your crawling fella tricking your visitors. <p/>
   Here's the <a href="http://code.google.com/p/screen-bug/source/browse/screenbug.js">readable source</a> if you're interested. <p/>
   Please contact me for any bugs/missing features you encounter, TYVM. <p/>
